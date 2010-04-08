@@ -5,7 +5,7 @@ import dao.memory.MemoryDAOFactory;
 
 public abstract class DAOFactory {
   public static DAOFactory getDAOFactory() {
-    return new MemoryDAOFactory();
+    return MemoryDAOFactory.getInstance();
   }
 
   public abstract void insertUsuario(IUsuarioDAO usuario) throws DAOException;
@@ -31,11 +31,13 @@ public abstract class DAOFactory {
   public abstract void insertMensagem(IMensagemDAO mensagem) throws DAOException;
   public abstract void deleteMensagem(IMensagemDAO mensagem);
   public abstract IMensagemDAO findMensagem(Integer id);
+  public abstract Collection findMensagensUsuario(IUsuarioDAO usuario);
+  public abstract Collection findMensagensSala(ISalaDAO sala);
   public abstract Collection findAllMensagens();
 
-  public abstract void insertSituacaoAlunoSala(ISituacaoAlunoSalaDAO situacao) throws DAOException;
-  public abstract void deleteSituacaoAlunoSala(ISituacaoAlunoSalaDAO situacao);
-  public abstract ISituacaoAlunoSalaDAO findSituacaoAlunoSala(
-          ISalaDAO sala, IUsuarioDAO usuario);
-  public abstract Collection findAllSituacoesAlunoSala();
+  public abstract void insertSituacaoUsuarioSala(ISituacaoUsuarioSalaDAO situacao) throws DAOException;
+  public abstract void deleteSituacaoUsuarioSala(ISituacaoUsuarioSalaDAO situacao);
+  public abstract Collection findSituacoesUsuario(IUsuarioDAO usuario);
+  public abstract Collection findSituacoesSala(ISalaDAO sala);
+  public abstract Collection findAllSituacoesUsuarioSala();
 }

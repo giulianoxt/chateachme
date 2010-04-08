@@ -1,6 +1,6 @@
 package dao;
 
-public interface ISituacaoAlunoSalaDAO {
+public interface ISituacaoUsuarioSalaDAO {
   public ISalaDAO getSala();
   public void setSala(ISalaDAO sala) throws DAOException;
 

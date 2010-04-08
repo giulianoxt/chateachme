@@ -5,12 +5,20 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class MemoryDAOFactory extends DAOFactory {
-  public Collection usuarios = new ArrayList();
-  public Collection professores = new ArrayList();
-  public Collection administradores = new ArrayList();
-  public Collection salas = new ArrayList();
-  public Collection mensagens = new ArrayList();
-  public Collection situacoes = new ArrayList();
+  private Collection usuarios = new ArrayList();
+  private Collection professores = new ArrayList();
+  private Collection administradores = new ArrayList();
+  private Collection salas = new ArrayList();
+  private Collection mensagens = new ArrayList();
+  private Collection situacoes = new ArrayList();
+
+  private static MemoryDAOFactory instance = new MemoryDAOFactory();
+
+  private MemoryDAOFactory() { }
+
+  public static MemoryDAOFactory getInstance() {
+    return instance;
+  }
 
   public void insertUsuario(IUsuarioDAO usuario) throws DAOException {
     throw new UnsupportedOperationException("Not supported yet.");
@@ -88,23 +96,35 @@ public class MemoryDAOFactory extends DAOFactory {
     throw new UnsupportedOperationException("Not supported yet.");
   }
 
+  public Collection findMensagensUsuario(IUsuarioDAO usuario) {
+    throw new UnsupportedOperationException("Not supported yet.");
+  }
+
+  public Collection findMensagensSala(ISalaDAO sala) {
+    throw new UnsupportedOperationException("Not supported yet.");
+  }
+
   public Collection findAllMensagens() {
     throw new UnsupportedOperationException("Not supported yet.");
   }
 
-  public void insertSituacaoAlunoSala(ISituacaoAlunoSalaDAO situacao) throws DAOException {
+  public void insertSituacaoUsuarioSala(ISituacaoUsuarioSalaDAO situacao) throws DAOException {
     throw new UnsupportedOperationException("Not supported yet.");
   }
 
-  public void deleteSituacaoAlunoSala(ISituacaoAlunoSalaDAO situacao) {
+  public void deleteSituacaoUsuarioSala(ISituacaoUsuarioSalaDAO situacao) {
     throw new UnsupportedOperationException("Not supported yet.");
   }
 
-  public ISituacaoAlunoSalaDAO findSituacaoAlunoSala(ISalaDAO sala, IUsuarioDAO usuario) {
+  public Collection findSituacoesUsuario(IUsuarioDAO usuario) {
     throw new UnsupportedOperationException("Not supported yet.");
   }
 
-  public Collection findAllSituacoesAlunoSala() {
+  public Collection findSituacoesSala(ISalaDAO sala) {
+    throw new UnsupportedOperationException("Not supported yet.");
+  }
+
+  public Collection findAllSituacoesUsuarioSala() {
     throw new UnsupportedOperationException("Not supported yet.");
   }
 }

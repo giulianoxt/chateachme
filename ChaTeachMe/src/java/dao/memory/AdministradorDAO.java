@@ -1,5 +1,6 @@
 package dao.memory;
 
-public class AdministradorDAO {
+import dao.IAdministradorDAO;
 
+public class AdministradorDAO extends ProfessorDAO implements IAdministradorDAO {
 }

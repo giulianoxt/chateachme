@@ -17,5 +17,5 @@ public interface ISalaDAO {
   public void setIpCamera(Integer ip);
 
   public Collection getMensagens();
-  public Collection getSituacoesAlunoSala();
+  public Collection getSituacoesUsuarioSala();
 }

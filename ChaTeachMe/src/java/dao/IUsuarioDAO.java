@@ -16,5 +16,5 @@ public interface IUsuarioDAO {
   public void setEmail(String email);
 
   public Collection getMensagensEnviadas();
-  public Collection getSituacoesAlunoSala();
+  public Collection getSituacoesUsuarioSala();
 }
