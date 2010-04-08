@@ -1,22 +1,12 @@
 package dao;
 
-import java.util.Collection;
-
 public interface ISituacaoAlunoSalaDAO {
-  public void insertSituacaoAlunoSala(ISituacaoAlunoSalaDAO situacao);
-  public void deleteSituacaoAlunoSala(ISituacaoAlunoSalaDAO situacao);
-
-  public ISituacaoAlunoSalaDAO findSituacaoAlunoSala(
-          ISalaDAO sala, IUsuarioDAO usuario);
-
-  public Collection findAll();
-
   public ISalaDAO getSala();
-  public void setSala(ISalaDAO sala);
+  public void setSala(ISalaDAO sala) throws DAOException;
 
   public IUsuarioDAO getUsuario();
-  public void setUsuario(IUsuarioDAO usuario);
+  public void setUsuario(IUsuarioDAO usuario) throws DAOException;
 
   public String getSituacao();
-  public void setSituacao(String situacao);
+  public void setSituacao(String situacao) throws DAOException;
 }

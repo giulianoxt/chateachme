@@ -23,7 +23,7 @@ public class LoginServlet extends CTLServlet {
     }
 
     protected void handleControllerNotFound(HttpServletRequest request, HttpServletResponse response) {
-        
+
     }
 
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) {

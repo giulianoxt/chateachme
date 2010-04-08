@@ -1,14 +1,10 @@
 package dao;
 
 import java.util.Date;
-import java.util.Collection;
 
 public interface IMensagemDAO {
-  public void insertMensagem(IMensagemDAO mensagem);
-  public void deleteMensagem(IMensagemDAO mensagem);
-
-  public IMensagemDAO findMensagem(Integer id);
-  public Collection findAll();
+  public Integer getId();
+  public void setId(Integer id) throws DAOException;
 
   public String getMensagem();
   public void setMensagem(String mensagem);

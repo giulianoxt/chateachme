@@ -3,14 +3,8 @@ package dao;
 import java.util.Collection;
 
 public interface IUsuarioDAO {
-  public void insertUsuario(IUsuarioDAO usuario);
-  public void deleteUsuario(IUsuarioDAO usuario);
-
-  public IUsuarioDAO findUsuario(String login);
-  public Collection findAll();
-
   public String getLogin();
-  public void setLogin(String login);
+  public void setLogin(String login) throws DAOException;
 
   public String getSenha();
   public void setSenha(String senha);

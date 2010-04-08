@@ -4,11 +4,8 @@ import java.util.Collection;
 import java.util.Date;
 
 public interface ISalaDAO {
-  public void insertSala(ISalaDAO sala);
-  public void deleteSala(ISalaDAO sala);
-
-  public ISalaDAO findSala(String titulo);
-  public Collection findAll();
+  public String getTitulo();
+  public void setTitulo(String titulo) throws DAOException;
 
   public String getDescricao();
   public void setDescricao(String descricao);
