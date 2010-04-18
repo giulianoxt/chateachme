@@ -156,12 +156,33 @@ public class MemoryDAOFactory extends DAOFactory {
         }
   }
 
+  private void addSituacoes() {
+      java.util.Iterator it_s = salas.iterator();
+      while (it_s.hasNext()) {
+          java.util.Iterator it_u = usuarios.iterator();
+          SalaDAO s = (SalaDAO) it_s.next();
+          while (it_u.hasNext()) {
+                try {
+                    UsuarioDAO u = (UsuarioDAO) it_u.next();
+                    SituacaoUsuarioSalaDAO sit = new SituacaoUsuarioSalaDAO();
+                    sit.setSala(s);
+                    sit.setSituacao("Online");
+                    sit.setUsuario(u);
+                    situacoes.add(sit);
+                } catch (DAOException ex) {
+                    ex.printStackTrace();
+                }
+          }
+      }
+  }
+
   private MemoryDAOFactory() {
     addUsers();
     addProfessor();
     addAdministrador();
     addSalas();
     addMensagens();
+    addSituacoes();
   }
 
   public static MemoryDAOFactory getInstance() {
