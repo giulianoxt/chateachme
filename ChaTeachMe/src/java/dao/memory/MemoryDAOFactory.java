@@ -21,11 +21,11 @@ public class MemoryDAOFactory extends DAOFactory {
   }
 
   public void insertUsuario(IUsuarioDAO usuario) throws DAOException {
-    throw new UnsupportedOperationException("Not supported yet.");
+    usuarios.add(usuario);
   }
 
   public void deleteUsuario(IUsuarioDAO usuario) {
-    throw new UnsupportedOperationException("Not supported yet.");
+    usuarios.remove(usuario);
   }
 
   public IUsuarioDAO findUsuario(String login) {
@@ -33,15 +33,15 @@ public class MemoryDAOFactory extends DAOFactory {
   }
 
   public Collection findAllUsuarios() {
-    throw new UnsupportedOperationException("Not supported yet.");
+    return usuarios;
   }
 
   public void insertProfessor(IProfessorDAO professor) throws DAOException {
-    throw new UnsupportedOperationException("Not supported yet.");
+    professores.add(professor);
   }
 
   public void deleteProfessor(IProfessorDAO professor) {
-    throw new UnsupportedOperationException("Not supported yet.");
+    professores.remove(professor);
   }
 
   public IProfessorDAO findProfessor(String login) {
@@ -49,15 +49,15 @@ public class MemoryDAOFactory extends DAOFactory {
   }
 
   public Collection findAllProfessores() {
-    throw new UnsupportedOperationException("Not supported yet.");
+    return professores;
   }
 
   public void insertAdministrador(IAdministradorDAO administrador) throws DAOException {
-    throw new UnsupportedOperationException("Not supported yet.");
+    administradores.add(administrador);
   }
 
   public void deleteAdministrador(IAdministradorDAO administrador) {
-    throw new UnsupportedOperationException("Not supported yet.");
+    administradores.remove(administrador);
   }
 
   public IAdministradorDAO findAdministrador(String login) {
@@ -65,15 +65,15 @@ public class MemoryDAOFactory extends DAOFactory {
   }
 
   public Collection findAllAdministradores() {
-    throw new UnsupportedOperationException("Not supported yet.");
+    return administradores;
   }
 
   public void insertSala(ISalaDAO sala) throws DAOException {
-    throw new UnsupportedOperationException("Not supported yet.");
+    salas.add(sala);
   }
 
   public void deleteSala(ISalaDAO sala) {
-    throw new UnsupportedOperationException("Not supported yet.");
+    salas.remove(sala);
   }
 
   public ISalaDAO findSala(String titulo) {
@@ -81,15 +81,15 @@ public class MemoryDAOFactory extends DAOFactory {
   }
 
   public Collection findAllSalas() {
-    throw new UnsupportedOperationException("Not supported yet.");
+    return salas;
   }
 
   public void insertMensagem(IMensagemDAO mensagem) throws DAOException {
-    throw new UnsupportedOperationException("Not supported yet.");
+    mensagens.add(mensagem);
   }
 
   public void deleteMensagem(IMensagemDAO mensagem) {
-    throw new UnsupportedOperationException("Not supported yet.");
+    mensagens.remove(mensagem);
   }
 
   public IMensagemDAO findMensagem(Integer id) {
@@ -105,15 +105,15 @@ public class MemoryDAOFactory extends DAOFactory {
   }
 
   public Collection findAllMensagens() {
-    throw new UnsupportedOperationException("Not supported yet.");
+    return mensagens;
   }
 
   public void insertSituacaoUsuarioSala(ISituacaoUsuarioSalaDAO situacao) throws DAOException {
-    throw new UnsupportedOperationException("Not supported yet.");
+    situacoes.add(situacao);
   }
 
   public void deleteSituacaoUsuarioSala(ISituacaoUsuarioSalaDAO situacao) {
-    throw new UnsupportedOperationException("Not supported yet.");
+    situacoes.remove(situacao);
   }
 
   public Collection findSituacoesUsuario(IUsuarioDAO usuario) {
@@ -125,6 +125,6 @@ public class MemoryDAOFactory extends DAOFactory {
   }
 
   public Collection findAllSituacoesUsuarioSala() {
-    throw new UnsupportedOperationException("Not supported yet.");
+    return situacoes;
   }
 }

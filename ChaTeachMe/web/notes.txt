@@ -1,0 +1,43 @@
+JSP's
+-------------------------
+
+- erro
+- login
+- login_error
+- view_discussions
+- new_discussion
+- discussion
+- admin
+
+
+Servlets
+-------------------------
+
+# LoginServlet
+ - doLogin(String login, String senha)
+  - se nao tiver autorizacao, redireciona para "login_error"
+  - se tiver autorizacao
+   - guarda na sessao o login e o tipo do usuario
+   - redireciona para "view_chats"
+
+
+*****************************************************************
+para todos os metodos abaixo, se nao tiver logado ou caso o usuario nao
+tenha o nivel de permissao determinado, redireciona para a pagina de erro
+*****************************************************************
+
+
+# DiscussionsServlet
+ - showDiscussions
+  - carrega a lista de discussoes do bd
+  - redireciona para "view_discussions"
+
+ - enterDiscussion(String topic)
+  - redireciona para "discussion"
+
+ - newDiscussion(String topic)
+  - coloca no bd a nova discussao
+  - redireciona para showDiscussions
+  
+  
+  
