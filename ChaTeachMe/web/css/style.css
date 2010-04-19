@@ -1,0 +1,12 @@
+a {
+	color: #000000;
+	text-decoration: none;
+}
+
+input {
+	background-color:#66FFCC;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:10px;
+	border:none;
+	font-style:oblique;
+}

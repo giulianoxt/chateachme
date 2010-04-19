@@ -14,6 +14,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h2>Login error</h2>
+        <h2>Login error</h2> [<%= getServletContext().getAttribute("ex") %>]
     </body>
 </html>

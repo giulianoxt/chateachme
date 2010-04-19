@@ -3,9 +3,12 @@
  * and open the template in the editor.
  */
 
-package modules.login;
+package modules.salas;
 
 import controller.CTLServlet;
+
+import controller.CTLServlet;
+import dao.memory.MemoryDAOFactory;
 import java.io.*;
 import java.net.*;
 
@@ -16,8 +19,8 @@ import javax.servlet.http.*;
  *
  * @author max
  */
-public class LoginServlet extends CTLServlet {
-   
+public class SalasServlet extends CTLServlet {
+
     public String getServletInfo() {
         return "Short description";
     }
@@ -29,7 +32,11 @@ public class LoginServlet extends CTLServlet {
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) {
         try {
             RequestDispatcher dispatcher = getServletContext().
-                    getRequestDispatcher("/login.jsp");
+                    getRequestDispatcher("/salas.jsp");
+
+            MemoryDAOFactory md = MemoryDAOFactory.getInstance();
+            getServletContext().setAttribute("salas", md.findAllSalas());
+
             dispatcher.forward(request, response);
         } catch (ServletException ex) {
             ex.printStackTrace();
@@ -37,21 +44,5 @@ public class LoginServlet extends CTLServlet {
             ex.printStackTrace();
         }
     }
-    
-    public void Error(
-            HttpServletRequest request,
-            HttpServletResponse response)
-    {
-        try {
-            request.setAttribute("Example", "Exemplo1");
-            getServletContext().setAttribute("ex", "S");
-            RequestDispatcher dispatcher = getServletContext().
-                    getRequestDispatcher("/login_error.jsp");
-            dispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 }
