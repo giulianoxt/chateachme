@@ -5,10 +5,10 @@ import java.util.Collection;
 import java.util.Date;
 
 public class SalaDAO implements ISalaDAO {
-  public String titulo;
-  public String descricao;
-  public Date dataCriacao;
-  public Integer ipCamera;
+  private String titulo;
+  private String descricao;
+  private Date dataCriacao;
+  private Integer ipCamera;
 
   public String getTitulo() {
     return titulo;

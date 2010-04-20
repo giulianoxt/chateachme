@@ -3,9 +3,10 @@ package dao.memory;
 import dao.*;
 
 public class SituacaoUsuarioSalaDAO implements ISituacaoUsuarioSalaDAO {
-  public String salaTitulo;
-  public String usuarioLogin;
-  public String situacao;
+  private String salaTitulo;
+  private String usuarioLogin;
+  private String situacao;
+  private Integer tempoEmSala;
 
   public ISalaDAO getSala() {
     return MemoryDAOFactory.getInstance().findSala(salaTitulo);
@@ -29,5 +30,13 @@ public class SituacaoUsuarioSalaDAO implements ISituacaoUsuarioSalaDAO {
 
   public void setSituacao(String situacao) throws DAOException {
     this.situacao = situacao;
+  }
+
+  public Integer getTempoEmSala() {
+    return tempoEmSala;
+  }
+
+  public void setTempoEmSala(Integer tempoEmSala) throws DAOException {
+    this.tempoEmSala = tempoEmSala;
   }
 }

@@ -4,12 +4,12 @@ import dao.*;
 import java.util.Date;
 
 public class MensagemDAO implements IMensagemDAO {
-  public Integer id;
-  public String mensagem;
-  public Date data;
-  public String tipo;
-  public String salaTitulo;
-  public String usuarioLogin;
+  private Integer id;
+  private String mensagem;
+  private Date data;
+  private String tipo;
+  private String salaTitulo;
+  private String usuarioLogin;
   
   public Integer getId() {
     return id;
