@@ -3,14 +3,11 @@
  * and open the template in the editor.
  */
 
-package modules.main;
+package modules.admin;
 
 import controller.CTLServlet;
-
-import controller.CTLServlet;
+import dao.IAdministradorDAO;
 import dao.IUsuarioDAO;
-import dao.memory.MemoryDAOFactory;
-import dao.memory.UsuarioDAO;
 import java.io.*;
 import java.net.*;
 
@@ -21,7 +18,7 @@ import javax.servlet.http.*;
  *
  * @author max
  */
-public class IndexServlet extends CTLServlet {
+public class AdminServlet extends CTLServlet {
 
     public String getServletInfo() {
         return "Short description";
@@ -34,14 +31,15 @@ public class IndexServlet extends CTLServlet {
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) {
         try {
             RequestDispatcher dispatcher = getServletContext().
-                    getRequestDispatcher("/main.jsp");
+                    getRequestDispatcher("/admin.jsp");
 
             HttpSession sess = request.getSession();
             if (sess != null && sess.getAttribute("usuario_obj") != null) {
-                IUsuarioDAO usuario = (IUsuarioDAO) sess.getAttribute("usuario_obj");
-                getServletContext().setAttribute("usuario", usuario.getLogin());
+                IUsuarioDAO admin = (IUsuarioDAO) sess.getAttribute("usuario_obj");
+                // TODO: CHECAR SE É ADMINISTRADOR
+                getServletContext().setAttribute("administrador", admin.getLogin());
             } else {
-                getServletContext().setAttribute("usuario", null);
+                getServletContext().setAttribute("administrador", null);
             }
 
             dispatcher.forward(request, response);
@@ -52,16 +50,7 @@ public class IndexServlet extends CTLServlet {
         }
     }
 
-    public void Sair(HttpServletRequest request, HttpServletResponse response) {
-        try {
-            HttpSession sess = request.getSession();
-            if (sess != null) {
-                sess.setAttribute("usuario_obj", null);
-            }
-            handleRequest(request, response);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void Up(HttpServletRequest request, HttpServletResponse response) {
+        handleRequest(request, response);
     }
-
 }

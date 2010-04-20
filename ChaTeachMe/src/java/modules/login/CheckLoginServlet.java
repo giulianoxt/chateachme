@@ -8,7 +8,10 @@ package modules.login;
 import controller.CTLServlet;
 
 import controller.CTLServlet;
+import dao.IAdministradorDAO;
+import dao.IUsuarioDAO;
 import dao.memory.MemoryDAOFactory;
+import dao.memory.UsuarioDAO;
 import java.io.*;
 import java.net.*;
 
@@ -32,7 +35,18 @@ public class CheckLoginServlet extends CTLServlet {
     public void handleRequest(HttpServletRequest request, HttpServletResponse response) {
         try {
             PrintWriter out = response.getWriter();
-            out.print("true");
+            try {
+                HttpSession sess = request.getSession(true);
+                String tipo = request.getParameter("tipo");
+                if (tipo == null) {
+                    IUsuarioDAO usuario = business.Autenticacao.login(
+                        request.getParameter("usuario"), request.getParameter("senha"));
+                    sess.setAttribute("usuario_obj", usuario);
+                    out.print("true");
+                }
+            } catch (Exception e_login) {
+                out.print("false");
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }

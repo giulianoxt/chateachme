@@ -26,7 +26,7 @@ body,td,th {
 		obj.style.backgroundColor = outColor;
 	}
         function go_form(){
-            var dataString = '';
+            var dataString = 'usuario=' + $("#usuario").val() + '&senha=' + $("#senha").val();
 
             $.ajax({
                 type: "POST",
@@ -88,13 +88,18 @@ body,td,th {
         </table>
             </div>
         <br />
+        <%
+            String usuario = (String) getServletContext().getAttribute("usuario");
+         %>
+         <%
+                if (usuario == null) {
+           %>
         <div id="login_form">
             <form id="form1" name="form1" method="post" action="" onsubmit="return go_form()">
           <table width="188" border="1">
-
             <tr>
               <td width="52"><div align="left">Login:</div></td>
-              <td width="120"><input type="text" name="textfield3" /></td>
+              <td width="120"><input type="text" id="usuario" name="usuario" /></td>
             </tr>
             <tr>
               <td><div align="left">Senha:</div>
@@ -111,6 +116,10 @@ body,td,th {
           </label>
         </form>
         </div>
+        <% } else { %>
+        Olá, <%= usuario %><br/>
+            <a href="?Sair"> Logout </a>
+        <% } %>
         <div id="msg_login"></div>
         <p>&nbsp;</p>
       </div></td>

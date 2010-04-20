@@ -28,6 +28,10 @@
         <servlet-name>CheckLoginServlet</servlet-name>
         <servlet-class>modules.login.CheckLoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminServlet</servlet-name>
+        <servlet-class>modules.admin.AdminServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ChatController</servlet-name>
         <url-pattern>/ChatController</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>CheckLoginServlet</servlet-name>
         <url-pattern>/CheckLoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminServlet</servlet-name>
+        <url-pattern>/AdminServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
