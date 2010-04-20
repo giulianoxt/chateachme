@@ -9,6 +9,7 @@ public class SalaDAO implements ISalaDAO {
   private String descricao;
   private Date dataCriacao;
   private Integer ipCamera;
+  private Boolean salaAberta;
 
   public String getTitulo() {
     return titulo;
@@ -48,5 +49,13 @@ public class SalaDAO implements ISalaDAO {
 
   public Collection getSituacoesUsuarioSala() {
     return MemoryDAOFactory.getInstance().findSituacoesSala(this);
+  }
+
+  public Boolean isSalaAberta() {
+    return salaAberta;
+  }
+
+  public void setSalaAberta(Boolean salaAberta) {
+    this.salaAberta = salaAberta;
   }
 }
