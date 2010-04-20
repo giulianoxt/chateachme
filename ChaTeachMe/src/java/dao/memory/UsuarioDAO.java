@@ -6,7 +6,7 @@ import java.util.Collection;
 
 public class UsuarioDAO implements IUsuarioDAO {
   private String login;
-  private String senha;
+  private byte[] senha;
   private String nome;
   private String email;
 
@@ -18,11 +18,11 @@ public class UsuarioDAO implements IUsuarioDAO {
     this.login = login;
   }
 
-  public String getSenha() {
+  public byte[] getSenha() {
     return senha;
   }
 
-  public void setSenha(String senha) {
+  public void setSenha(byte[] senha) {
     this.senha = senha;
   }
 

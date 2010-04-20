@@ -6,8 +6,8 @@ public interface IUsuarioDAO {
   public String getLogin();
   public void setLogin(String login) throws DAOException;
 
-  public String getSenha();
-  public void setSenha(String senha);
+  public byte[] getSenha();
+  public void setSenha(byte[] senha);
 
   public String getNome();
   public void setNome(String nome);
