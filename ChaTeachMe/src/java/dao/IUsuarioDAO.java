@@ -15,6 +15,9 @@ public interface IUsuarioDAO {
   public String getEmail();
   public void setEmail(String email);
 
+  public boolean isProfessor();
+  public boolean isAdministrador();
+
   public Collection getMensagensEnviadas();
   public Collection getSituacoesUsuarioSala();
 }

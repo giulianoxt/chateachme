@@ -49,4 +49,12 @@ public class UsuarioDAO implements IUsuarioDAO {
   public Collection getSituacoesUsuarioSala() {
     return MemoryDAOFactory.getInstance().findSituacoesUsuario(this);
   }
+
+  public boolean isProfessor() {
+    return false;
+  }
+
+  public boolean isAdministrador() {
+    return false;
+  }
 }
