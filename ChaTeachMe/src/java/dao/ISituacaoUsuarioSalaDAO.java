@@ -10,6 +10,6 @@ public interface ISituacaoUsuarioSalaDAO {
   public String getSituacao();
   public void setSituacao(String situacao) throws DAOException;
 
-  public Integer getTempoEmSala();
-  public void setTempoEmSala(Integer tempoEmSala) throws DAOException;
+  public Long getTempoEmSala();
+  public void setTempoEmSala(Long tempoEmSala) throws DAOException;
 }

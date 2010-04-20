@@ -6,7 +6,7 @@ public class SituacaoUsuarioSalaDAO implements ISituacaoUsuarioSalaDAO {
   private String salaTitulo;
   private String usuarioLogin;
   private String situacao;
-  private Integer tempoEmSala;
+  private Long tempoEmSala;
 
   public ISalaDAO getSala() {
     return MemoryDAOFactory.getInstance().findSala(salaTitulo);
@@ -32,11 +32,11 @@ public class SituacaoUsuarioSalaDAO implements ISituacaoUsuarioSalaDAO {
     this.situacao = situacao;
   }
 
-  public Integer getTempoEmSala() {
+  public Long getTempoEmSala() {
     return tempoEmSala;
   }
 
-  public void setTempoEmSala(Integer tempoEmSala) throws DAOException {
+  public void setTempoEmSala(Long tempoEmSala) throws DAOException {
     this.tempoEmSala = tempoEmSala;
   }
 }
