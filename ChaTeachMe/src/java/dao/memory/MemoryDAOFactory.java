@@ -15,10 +15,8 @@ public class MemoryDAOFactory extends DAOFactory {
 
   private static MemoryDAOFactory instance = new MemoryDAOFactory();
 
-
   private void addUsers() {
         try {
-
             dao.memory.UsuarioDAO u1 = new dao.memory.UsuarioDAO();
             u1.setEmail("m.r650200@gmail.com");
             u1.setLogin("m.r650200");
@@ -101,7 +99,6 @@ public class MemoryDAOFactory extends DAOFactory {
   }
 
   private void addMensagens() {
-
      MensagemDAO m1, m2;
      java.util.Iterator it = salas.iterator();
      int id = 0;
@@ -197,7 +194,6 @@ public class MemoryDAOFactory extends DAOFactory {
   }
 
   public IUsuarioDAO findUsuario(String login) {
-    //throw new UnsupportedOperationException("Not supported yet.");
       java.util.Iterator it_u = usuarios.iterator();
       UsuarioDAO res = null;
       while (it_u.hasNext()) {
@@ -223,7 +219,6 @@ public class MemoryDAOFactory extends DAOFactory {
   }
 
   public IProfessorDAO findProfessor(String login) {
-    //throw new UnsupportedOperationException("Not supported yet.");
       java.util.Iterator it_p = professores.iterator();
       ProfessorDAO res = null;
       while (it_p.hasNext()) {
@@ -249,7 +244,6 @@ public class MemoryDAOFactory extends DAOFactory {
   }
 
   public IAdministradorDAO findAdministrador(String login) {
-    //throw new UnsupportedOperationException("Not supported yet.");
       java.util.Iterator it_a = administradores.iterator();
       AdministradorDAO res = null;
       while (it_a.hasNext()) {
@@ -275,7 +269,6 @@ public class MemoryDAOFactory extends DAOFactory {
   }
 
   public ISalaDAO findSala(String titulo) {
-    //throw new UnsupportedOperationException("Not supported yet.");
       java.util.Iterator it_s = salas.iterator();
       SalaDAO res = null;
       while (it_s.hasNext()) {
@@ -301,7 +294,6 @@ public class MemoryDAOFactory extends DAOFactory {
   }
 
   public IMensagemDAO findMensagem(Integer id) {
-    //throw new UnsupportedOperationException("Not supported yet.");
       java.util.Iterator it_m = mensagens.iterator();
       MensagemDAO res = null;
       while (it_m.hasNext()) {
@@ -315,7 +307,6 @@ public class MemoryDAOFactory extends DAOFactory {
   }
   
   public Collection findMensagensUsuario(IUsuarioDAO usuario) {
-    //throw new UnsupportedOperationException("Not supported yet.");
       Collection res = new ArrayList();
       java.util.Iterator it_m = mensagens.iterator();
       while (it_m.hasNext()) {
@@ -328,7 +319,6 @@ public class MemoryDAOFactory extends DAOFactory {
   }
 
   public Collection findMensagensSala(ISalaDAO sala) {
-    //throw new UnsupportedOperationException("Not supported yet.");
       Collection res = new ArrayList();
       java.util.Iterator it_m = mensagens.iterator();
       while (it_m.hasNext()) {
@@ -353,7 +343,6 @@ public class MemoryDAOFactory extends DAOFactory {
   }
 
   public Collection findSituacoesUsuario(IUsuarioDAO usuario) {
-    //throw new UnsupportedOperationException("Not supported yet.");
       Collection res = new ArrayList();
       java.util.Iterator it_sit = situacoes.iterator();
       while (it_sit.hasNext()) {
@@ -366,7 +355,6 @@ public class MemoryDAOFactory extends DAOFactory {
   }
 
   public Collection findSituacoesSala(ISalaDAO sala) {
-    //throw new UnsupportedOperationException("Not supported yet.");
       Collection res = new ArrayList();
       java.util.Iterator it_sit = situacoes.iterator();
       while (it_sit.hasNext()) {
