@@ -12,9 +12,9 @@ import java.util.Date;
 import java.util.Iterator;
 
 public class Chat {
-  private DAOFactory daoFactory = DAOFactory.getDAOFactory();
+  private static DAOFactory daoFactory = DAOFactory.getDAOFactory();
 
-  public void entrarEmSala(IUsuarioDAO usuario, ISalaDAO sala)
+  public static void entrarEmSala(IUsuarioDAO usuario, ISalaDAO sala)
           throws BusinessException {
     try {
       ISituacaoUsuarioSalaDAO situacao = daoFactory.newSituacaoUsuarioSala();
@@ -28,7 +28,7 @@ public class Chat {
     }
   }
 
-  public void enviarMensagem(IUsuarioDAO usuario, IMensagemDAO mensagem)
+  public static void enviarMensagem(IUsuarioDAO usuario, IMensagemDAO mensagem)
           throws BusinessException {
     try {
       mensagem.setDataEnvio(new Date(System.currentTimeMillis()));
@@ -38,13 +38,12 @@ public class Chat {
     }
   }
 
-  public Collection getMensagensNaoLidas(IUsuarioDAO usuario, ISalaDAO sala, Date lastUpdate) {
+  public static Collection getMensagensNaoLidas(IUsuarioDAO usuario, ISalaDAO sala, Date lastUpdate) {
     Collection mensagens = daoFactory.findMensagensSala(sala);
     Collection naoLidas = new ArrayList();
 
     for (Iterator it = mensagens.iterator(); it.hasNext(); ) {
       IMensagemDAO msg = (IMensagemDAO)it.next();
-
       if (msg.getDataEnvio().after(lastUpdate)) {
         naoLidas.add(msg);
       }
