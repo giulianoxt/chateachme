@@ -4,7 +4,6 @@ import dao.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import org.hsqldb.lib.Iterator;
 
 public class MemoryDAOFactory extends DAOFactory {
   private Collection usuarios = new ArrayList();
@@ -203,7 +202,7 @@ public class MemoryDAOFactory extends DAOFactory {
       UsuarioDAO res = null;
       while (it_u.hasNext()) {
           UsuarioDAO u = (UsuarioDAO) it_u.next();
-          if (u.getLogin() == login) {
+          if (u.getLogin().equals(login)) {
               res = u;
               break;
           }
@@ -229,7 +228,7 @@ public class MemoryDAOFactory extends DAOFactory {
       ProfessorDAO res = null;
       while (it_p.hasNext()) {
           ProfessorDAO p = (ProfessorDAO) it_p.next();
-          if (p.getLogin() == login) {
+          if (p.getLogin().equals(login)) {
               res = p;
               break;
           }
@@ -255,7 +254,7 @@ public class MemoryDAOFactory extends DAOFactory {
       AdministradorDAO res = null;
       while (it_a.hasNext()) {
           AdministradorDAO a = (AdministradorDAO) it_a.next();
-          if (a.getLogin() == login) {
+          if (a.getLogin().equals(login)) {
               res = a;
               break;
           }
@@ -281,7 +280,7 @@ public class MemoryDAOFactory extends DAOFactory {
       SalaDAO res = null;
       while (it_s.hasNext()) {
           SalaDAO s = (SalaDAO) it_s.next();
-          if (s.getTitulo() == titulo) {
+          if (s.getTitulo().equals(titulo)) {
               res = s;
               break;
           }
@@ -321,7 +320,7 @@ public class MemoryDAOFactory extends DAOFactory {
       java.util.Iterator it_m = mensagens.iterator();
       while (it_m.hasNext()) {
           MensagemDAO m = (MensagemDAO) it_m.next();
-          if (m.getUsuario().getLogin() == usuario.getLogin()) {
+          if (m.getUsuario().getLogin().equals(usuario.getLogin())) {
               res.add(m);
           }
       }
@@ -334,7 +333,7 @@ public class MemoryDAOFactory extends DAOFactory {
       java.util.Iterator it_m = mensagens.iterator();
       while (it_m.hasNext()) {
           MensagemDAO m = (MensagemDAO) it_m.next();
-          if (m.getSala().getTitulo() == sala.getTitulo()) {
+          if (m.getSala().getTitulo().equals(sala.getTitulo())) {
               res.add(m);
           }
       }
@@ -359,7 +358,7 @@ public class MemoryDAOFactory extends DAOFactory {
       java.util.Iterator it_sit = situacoes.iterator();
       while (it_sit.hasNext()) {
           SituacaoUsuarioSalaDAO sit = (SituacaoUsuarioSalaDAO) it_sit.next();
-          if (sit.getUsuario().getLogin() == usuario.getLogin()) {
+          if (sit.getUsuario().getLogin().equals(usuario.getLogin())) {
               res.add(sit);
           }
       }
@@ -372,7 +371,7 @@ public class MemoryDAOFactory extends DAOFactory {
       java.util.Iterator it_sit = situacoes.iterator();
       while (it_sit.hasNext()) {
           SituacaoUsuarioSalaDAO sit = (SituacaoUsuarioSalaDAO) it_sit.next();
-          if (sit.getSala().getTitulo() == sala.getTitulo()) {
+          if (sit.getSala().getTitulo().equals(sala.getTitulo())) {
               res.add(sit);
           }
       }
