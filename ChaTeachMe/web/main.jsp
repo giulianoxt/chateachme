@@ -45,7 +45,9 @@ body,td,th {
                             });
                         } else if (data == 'false') {
                             alert("Usuário não cadastrado!");
-                        }
+                        } else {
+							alert("Erro: " + data);
+						}
                     }
             });
 
