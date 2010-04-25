@@ -36,6 +36,10 @@
         <servlet-name>ChatServlet</servlet-name>
         <servlet-class>modules.salas.ChatServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CadastroServlet</servlet-name>
+        <servlet-class>modules.login.CadastroServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ChatController</servlet-name>
         <url-pattern>/ChatController</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>ChatServlet</servlet-name>
         <url-pattern>/ChatServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastroServlet</servlet-name>
+        <url-pattern>/CadastroServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
