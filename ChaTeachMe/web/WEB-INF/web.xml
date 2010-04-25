@@ -40,6 +40,10 @@
         <servlet-name>CadastroServlet</servlet-name>
         <servlet-class>modules.login.CadastroServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProfessorServlet</servlet-name>
+        <servlet-class>modules.admin.ProfessorServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ChatController</servlet-name>
         <url-pattern>/ChatController</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>CadastroServlet</servlet-name>
         <url-pattern>/CadastroServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfessorServlet</servlet-name>
+        <url-pattern>/ProfessorServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
