@@ -7,7 +7,7 @@ import dao.ISituacaoUsuarioSalaDAO;
 import java.util.Collection;
 import java.util.Iterator;
 
-public class Administracao {
+class Administracao {
   private static DAOFactory daoFactory = DAOFactory.getDAOFactory();
 
   public static void cadastrarSala(ISalaDAO sala) throws BusinessException {

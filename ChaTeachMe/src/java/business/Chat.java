@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 
-public class Chat {
+class Chat {
   private static DAOFactory daoFactory = DAOFactory.getDAOFactory();
 
   public static void entrarEmSala(IUsuarioDAO usuario, ISalaDAO sala)

@@ -40,17 +40,17 @@ public class Facade {
     Administracao.excluirSala(sala);
   }
 
-  public void entrarEmSala(IUsuarioDAO usuario, ISalaDAO sala)
+  public static void entrarEmSala(IUsuarioDAO usuario, ISalaDAO sala)
           throws BusinessException {
     Chat.entrarEmSala(usuario, sala);
   }
 
-  public void enviarMensagem(IUsuarioDAO usuario, IMensagemDAO mensagem)
+  public static void enviarMensagem(IUsuarioDAO usuario, IMensagemDAO mensagem)
           throws BusinessException {
     Chat.enviarMensagem(usuario, mensagem);
   }
 
-  public Collection getMensagensNaoLidas(
+  public static Collection getMensagensNaoLidas(
           IUsuarioDAO usuario, ISalaDAO sala, Date lastUpdate) {
     return Chat.getMensagensNaoLidas(usuario, sala, lastUpdate);
   }

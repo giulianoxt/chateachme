@@ -6,12 +6,8 @@
 package modules.salas;
 
 import controller.CTLServlet;
-
-import controller.CTLServlet;
-import dao.memory.MemoryDAOFactory;
+import dao.DAOFactory;
 import java.io.*;
-import java.net.*;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -34,8 +30,8 @@ public class SalasServlet extends CTLServlet {
             RequestDispatcher dispatcher = getServletContext().
                     getRequestDispatcher("/salas.jsp");
 
-            MemoryDAOFactory md = MemoryDAOFactory.getInstance();
-            getServletContext().setAttribute("salas", md.findAllSalas());
+            DAOFactory df = DAOFactory.getDAOFactory();
+            getServletContext().setAttribute("salas", df.findAllSalas());
 
             dispatcher.forward(request, response);
         } catch (ServletException ex) {

@@ -1,7 +1,7 @@
 package dao.memory;
 
-import business.Autenticacao;
 import dao.*;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -18,38 +18,43 @@ public class MemoryDAOFactory extends DAOFactory {
 
   private void addUsers() {
         try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] senha1234 = md.digest("1234".getBytes());
+          
             dao.memory.UsuarioDAO u1 = new dao.memory.UsuarioDAO();
             u1.setEmail("m.r650200@gmail.com");
             u1.setLogin("m.r650200");
-            u1.setSenha(Autenticacao.hashSenha("1234"));
+            u1.setSenha(senha1234);
 
             dao.memory.UsuarioDAO u2 = new dao.memory.UsuarioDAO();
             u2.setEmail("ex1@ex.com.br");
             u2.setLogin("ex1");
-            u2.setSenha(Autenticacao.hashSenha("1234"));
+            u2.setSenha(senha1234);
 
             dao.memory.UsuarioDAO u3 = new dao.memory.UsuarioDAO();
             u3.setEmail("ex2");
             u3.setLogin("ex3");
-            u3.setSenha(Autenticacao.hashSenha("1234"));
+            u3.setSenha(senha1234);
 
             dao.memory.UsuarioDAO u4 = new dao.memory.UsuarioDAO();
             u4.setEmail("m.r650200@gmail.com");
             u4.setLogin("m.r650200");
-            u4.setSenha(Autenticacao.hashSenha("1234"));
+            u4.setSenha(senha1234);
 
             usuarios.add(u1);
             usuarios.add(u2);
             usuarios.add(u3);
             usuarios.add(u4);
 
-        } catch (DAOException ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
   }
   
   private void addProfessor() {
         try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] senha1234 = md.digest("1234".getBytes());
             ProfessorDAO p1;
             ProfessorDAO p2;
             
@@ -57,17 +62,17 @@ public class MemoryDAOFactory extends DAOFactory {
             p1.setEmail("prof1@ex.com");
             p1.setNome("Prof Um");
             p1.setLogin("prof1");
-            p1.setSenha(Autenticacao.hashSenha("1234"));
+            p1.setSenha(senha1234);
 
             p2 = new ProfessorDAO();
             p2.setEmail("prof2@ex.com");
             p2.setNome("Prof Dois");
             p2.setLogin("prof2");
-            p2.setSenha(Autenticacao.hashSenha("1234"));
+            p2.setSenha(senha1234);
 
             professores.add(p1);
             professores.add(p2);
-        } catch (DAOException ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
 
@@ -135,24 +140,27 @@ public class MemoryDAOFactory extends DAOFactory {
 
   private void addAdministrador() {
         try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] senha1234 = md.digest("1234".getBytes());
+
             AdministradorDAO a1;
             AdministradorDAO a2;
 
             a1 = new AdministradorDAO();
             a1.setEmail("admin@ex.com");
             a1.setLogin("admin1");
-            a1.setSenha(Autenticacao.hashSenha("1234"));
+            a1.setSenha(senha1234);
             a1.setNome("Admin Um");
             
             a2 = new AdministradorDAO();
             a2.setEmail("admin@ex.com");
             a2.setLogin("admin2");
-            a2.setSenha(Autenticacao.hashSenha("1234"));
+            a2.setSenha(senha1234);
             a2.setNome("Admin Dois");
 
             administradores.add(a1);
             administradores.add(a2);
-        } catch (DAOException ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
   }

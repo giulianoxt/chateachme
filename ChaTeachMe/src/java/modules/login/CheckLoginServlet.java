@@ -39,7 +39,7 @@ public class CheckLoginServlet extends CTLServlet {
                 HttpSession sess = request.getSession(true);
                 String tipo = request.getParameter("tipo");
                 if (tipo == null) {
-                    IUsuarioDAO usuario = business.Autenticacao.login(
+                    IUsuarioDAO usuario = business.Facade.login(
                         request.getParameter("usuario"), request.getParameter("senha"));
                     sess.setAttribute("usuario_obj", usuario);
                     out.print("true");

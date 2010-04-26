@@ -8,7 +8,7 @@ import dao.IUsuarioDAO;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Autenticacao {
+class Autenticacao {
   private static DAOFactory daoFactory = DAOFactory.getDAOFactory();
 
   public static IUsuarioDAO login(String login, String senha) throws BusinessException {

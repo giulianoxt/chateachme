@@ -5,14 +5,11 @@
 package modules.salas;
 
 import controller.CTLServlet;
-
-import controller.CTLServlet;
+import dao.DAOFactory;
 import dao.IMensagemDAO;
 import dao.ISalaDAO;
 import dao.IUsuarioDAO;
-import dao.memory.MemoryDAOFactory;
 import java.io.*;
-import java.net.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
@@ -41,7 +38,7 @@ public class ChatServlet extends CTLServlet {
             Boolean login_ok, sala_ok;
             ISalaDAO sala;
             Collection msgs;
-            MemoryDAOFactory mem_dao;
+            DAOFactory daoFactory;
 
             RequestDispatcher dispatcher = getServletContext().
                     getRequestDispatcher("/chat.jsp");
@@ -49,20 +46,20 @@ public class ChatServlet extends CTLServlet {
             sess = request.getSession(false);
             login_ok = Boolean.valueOf(false);
             sala_ok = Boolean.valueOf(false);
-            mem_dao = MemoryDAOFactory.getInstance();
+            daoFactory = DAOFactory.getDAOFactory();
             if (sess != null) {
                 IUsuarioDAO usuario = (IUsuarioDAO) sess.getAttribute("usuario_obj");
                 if (usuario != null) {
                     login_ok = Boolean.valueOf(true);
                     getServletContext().setAttribute("usuario_login", usuario.getLogin());
 
-                    sala = mem_dao.findSala(request.getParameter("sala"));
+                    sala = daoFactory.findSala(request.getParameter("sala"));
                     if (sala != null) {
                         sala_ok = Boolean.valueOf(true);
                         //TODO: Mudar linha abaixo
-                        msgs = business.Chat.getMensagensNaoLidas(usuario, sala, new Date(2010, 1, 1));
+                        msgs = business.Facade.getMensagensNaoLidas(usuario, sala, new Date(2010, 1, 1));
 
-                        business.Chat.entrarEmSala(usuario, sala);
+                        business.Facade.entrarEmSala(usuario, sala);
 
                         getServletContext().setAttribute("titulo", sala.getTitulo());
                         getServletContext().setAttribute("mensagens", msgs);
@@ -100,7 +97,7 @@ public class ChatServlet extends CTLServlet {
             {
                 usuario = (IUsuarioDAO) sess.getAttribute("usuario_obj");
                 sala = (ISalaDAO) sess.getAttribute("sala_obj");
-                msg = MemoryDAOFactory.getInstance().newMensagem();
+                msg = DAOFactory.getDAOFactory().newMensagem();
                 msg.setDataEnvio(new Date());
                 msg.setSala(sala);
                 //TODO: Mudar linha abaixo ( O valor de id é incrementado automaticamente )
@@ -108,7 +105,7 @@ public class ChatServlet extends CTLServlet {
                 msg.setMensagem(request.getParameter("texto"));
                 msg.setTipo(request.getParameter("tipo_texto"));
                 msg.setUsuario(usuario);
-                business.Chat.enviarMensagem(usuario, msg);
+                business.Facade.enviarMensagem(usuario, msg);
                 out.print("true");
             }
         } catch (Exception e) {
@@ -142,7 +139,7 @@ public class ChatServlet extends CTLServlet {
                 ArrayList arr = new ArrayList();
 
                 //MUDAR LINHA ABAIXO
-                msgs = business.Chat.getMensagensNaoLidas(usuario, sala, new Date(2010, 1, 1));
+                msgs = business.Facade.getMensagensNaoLidas(usuario, sala, new Date(2010, 1, 1));
                 //MUDAR LINHA ABAIXO
                 sess.setAttribute("data_atualizacao", new Date(2010, 1, 1));
 
@@ -151,11 +148,11 @@ public class ChatServlet extends CTLServlet {
                 { 
                     msg = (IMensagemDAO) it_msg.next();
                     arr.add(msg.getUsuario().getLogin());
-                    if (msg.getTipo() == "texto")
+                    if (msg.getTipo().equals("texto"))
                     {
                         arr.add(msg.getMensagem());
                     }
-                    else if (msg.getTipo() == "latex")
+                    else if (msg.getTipo().equals("latex"))
                     {
                         arr.add("<img src=\"http://www.codecogs.com/gif.latex?" + msg.getMensagem() + "\">");
                     }

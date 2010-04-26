@@ -6,7 +6,6 @@ package modules.login;
 
 import controller.CTLServlet;
 import java.io.PrintWriter;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -66,7 +65,7 @@ public class CadastroServlet extends CTLServlet {
             }
             else
             {
-                business.Autenticacao.cadastrarUsuario(nome, email, login, senha);
+                business.Facade.cadastrarUsuario(nome, email, login, senha);
                 out.print("true");
             }            
         }

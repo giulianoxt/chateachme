@@ -6,8 +6,8 @@
 package modules.admin;
 
 import controller.CTLServlet;
+import dao.DAOFactory;
 import dao.ISalaDAO;
-import dao.memory.MemoryDAOFactory;
 import java.io.*;
 import java.util.Date;
 
@@ -58,7 +58,7 @@ public class ProfessorServlet extends CTLServlet {
         {
             HttpSession sess;
             PrintWriter out;
-            MemoryDAOFactory mem;
+            DAOFactory mem;
             ISalaDAO sala;
             String descricao, titulo, ip;
 
@@ -74,14 +74,14 @@ public class ProfessorServlet extends CTLServlet {
                 ip = request.getParameter("ip");
                 descricao = request.getParameter("descricao");
 
-                mem = MemoryDAOFactory.getInstance();
+                mem = DAOFactory.getDAOFactory();
                 sala = mem.newSala();
                 sala.setDataCriacao(new Date());
                 sala.setDescricao(descricao);
                 sala.setIpCamera(Integer.getInteger(ip));
                 sala.setSalaAberta(Boolean.FALSE);
                 sala.setTitulo(titulo);
-                business.Administracao.cadastrarSala(sala);
+                business.Facade.cadastrarSala(sala);
 
                 out.print("true");
             }
