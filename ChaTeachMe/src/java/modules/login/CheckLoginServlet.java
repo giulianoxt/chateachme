@@ -48,6 +48,7 @@ public class CheckLoginServlet extends CTLServlet {
                 out.print("false");
             }
         } catch (Exception ex) {
+            System.out.println("CheckLoginServlet::handleRequest");
             ex.printStackTrace();
         }
     }

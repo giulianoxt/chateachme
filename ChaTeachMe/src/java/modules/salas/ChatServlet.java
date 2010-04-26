@@ -75,6 +75,7 @@ public class ChatServlet extends CTLServlet {
 
             dispatcher.forward(request, response);
         } catch (Exception ex) {
+            System.out.println("ChatServlet::handleRequest");
             ex.printStackTrace();
         }
     }
@@ -109,6 +110,7 @@ public class ChatServlet extends CTLServlet {
                 out.print("true");
             }
         } catch (Exception e) {
+            System.out.println("ChatServlet::EnviarMensagem");
             e.printStackTrace();
         }
     }
@@ -164,6 +166,7 @@ public class ChatServlet extends CTLServlet {
                 out.print(array);
             }
         } catch (Exception e) {
+            System.out.println("ChatServlet::getMensagens");
             e.printStackTrace();
         }
     }

@@ -34,9 +34,8 @@ public class SalasServlet extends CTLServlet {
             getServletContext().setAttribute("salas", df.findAllSalas());
 
             dispatcher.forward(request, response);
-        } catch (ServletException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
+        } catch (Exception ex) {
+            System.out.println("SalasServlet::handleRequest");
             ex.printStackTrace();
         }
     }

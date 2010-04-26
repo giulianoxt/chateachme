@@ -45,9 +45,8 @@ public class ProfessorServlet extends CTLServlet {
             getServletContext().setAttribute("login_ok", login_ok);
 
             dispatcher.forward(request, response);
-        } catch (ServletException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
+        } catch (Exception ex) {
+            System.out.println("ProfessorServlet::handleRequest");
             ex.printStackTrace();
         }
     }
@@ -88,6 +87,7 @@ public class ProfessorServlet extends CTLServlet {
         }
         catch (Exception e)
         {
+            System.out.println("ProfessorServlet::CadastrarSala");
             e.printStackTrace();
         }
     }

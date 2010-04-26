@@ -29,6 +29,7 @@ public class CadastroServlet extends CTLServlet {
 
             dispatcher.forward(request, response);
         } catch (Exception ex) {
+            System.out.println("CadastroServlet::handleRequest");
             ex.printStackTrace();
         }
     }
@@ -71,6 +72,7 @@ public class CadastroServlet extends CTLServlet {
         }
         catch (Exception e)
         {
+            System.out.println("CadastroServlet::Cadastrar");
             e.printStackTrace();
         }
     }

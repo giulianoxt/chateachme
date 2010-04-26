@@ -128,13 +128,13 @@ body,td,th {
                   <td width="77"><div align="center"><%= i_msg.getDataEnvio().getHours() %>:<%= i_msg.getDataEnvio().getMinutes() %>:<%= i_msg.getDataEnvio().getSeconds() %></div></td>
                   <td width="242"><div align="left">
                           <%
-                           if (i_msg.getTipo() == "texto")
+                           if (i_msg.getTipo().equals("texto"))
                            {
                           %>
                           <%= i_msg.getMensagem() %>
                           <%
                            }
-                           else if (i_msg.getTipo() == "latex")
+                           else if (i_msg.getTipo().equals("latex"))
                            {
                           %>
                           <img src="http://www.codecogs.com/gif.latex?<%= i_msg.getMensagem() %>" />

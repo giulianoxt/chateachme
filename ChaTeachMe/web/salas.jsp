@@ -53,7 +53,7 @@ body,td,th {
                java.util.Collection salas = (java.util.Collection) getServletContext().getAttribute("salas");
                java.util.Iterator it_s = salas.iterator();
                while (it_s.hasNext()) {
-                   dao.memory.SalaDAO sala = (dao.memory.SalaDAO) it_s.next();
+                   dao.ISalaDAO sala = (dao.ISalaDAO) it_s.next();
               %>
 
           <tr>

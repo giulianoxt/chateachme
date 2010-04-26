@@ -6,14 +6,7 @@
 package modules.main;
 
 import controller.CTLServlet;
-
-import controller.CTLServlet;
 import dao.IUsuarioDAO;
-import dao.memory.MemoryDAOFactory;
-import dao.memory.UsuarioDAO;
-import java.io.*;
-import java.net.*;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -45,9 +38,8 @@ public class IndexServlet extends CTLServlet {
             }
 
             dispatcher.forward(request, response);
-        } catch (ServletException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
+        } catch (Exception ex) {
+            System.out.println("IndexServlet::handleRequest");
             ex.printStackTrace();
         }
     }
@@ -60,6 +52,7 @@ public class IndexServlet extends CTLServlet {
             }
             handleRequest(request, response);
         } catch (Exception e) {
+            System.out.println("IndexServlet::Sair");
             e.printStackTrace();
         }
     }

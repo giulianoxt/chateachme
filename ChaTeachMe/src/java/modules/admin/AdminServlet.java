@@ -41,9 +41,8 @@ public class AdminServlet extends CTLServlet {
             }
 
             dispatcher.forward(request, response);
-        } catch (ServletException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
+        } catch (Exception ex) {
+            System.out.println("AdminServlet::handleRequest");
             ex.printStackTrace();
         }
     }

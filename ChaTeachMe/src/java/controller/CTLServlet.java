@@ -31,7 +31,8 @@ abstract public class CTLServlet extends HttpServlet {
             request.setAttribute("servletPath", request.getServletPath());
             //getController(this, getMethodName(request));
             dispatch(getController(this, getMethodName(request)), this, request, response);
-        } catch (Exception e) { 
+        } catch (Exception e) {
+            System.out.println("CTLServlet::processRequest");
             e.printStackTrace();
         }
     }

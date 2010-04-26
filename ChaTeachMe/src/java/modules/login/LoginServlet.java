@@ -6,9 +6,6 @@
 package modules.login;
 
 import controller.CTLServlet;
-import java.io.*;
-import java.net.*;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 
@@ -31,9 +28,8 @@ public class LoginServlet extends CTLServlet {
             RequestDispatcher dispatcher = getServletContext().
                     getRequestDispatcher("/login.jsp");
             dispatcher.forward(request, response);
-        } catch (ServletException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
+        } catch (Exception ex) {
+            System.out.println("LoginServlet::handleRequest");
             ex.printStackTrace();
         }
     }
@@ -48,9 +44,8 @@ public class LoginServlet extends CTLServlet {
             RequestDispatcher dispatcher = getServletContext().
                     getRequestDispatcher("/login_error.jsp");
             dispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
+            System.out.println("LoginServlet::Error");
             e.printStackTrace();
         }
     }
