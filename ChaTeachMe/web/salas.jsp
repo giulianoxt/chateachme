@@ -59,7 +59,7 @@ body,td,th {
           <tr>
             <td><div align="center"><%= sala.getTitulo() %></div></td>
             <td><div align="center">0</div></td>
-            <td  onmouseover="onover(this)" onmouseout="onout(this)"><div align="center"><form action="ChatTeachMe/ChatServlet" method="post"><input name="sala" type="hidden" value="<%= sala.getTitulo() %>" /><input name="" type="submit" value="Entrar" /></form></div></td>
+            <td  onmouseover="onover(this)" onmouseout="onout(this)"><div align="center"><form action="/ChaTeachMe/ChatServlet" method="post"><input name="sala" type="hidden" value="<%= sala.getTitulo() %>" /><input name="" type="submit" value="Entrar" /></form></div></td>
           </tr>
 
           <%
