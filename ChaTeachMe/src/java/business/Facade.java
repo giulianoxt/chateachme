@@ -52,6 +52,9 @@ public class Facade {
 
   public static Collection getMensagensNaoLidas(
           IUsuarioDAO usuario, ISalaDAO sala, Date lastUpdate) {
-    return Chat.getMensagensNaoLidas(usuario, sala, lastUpdate);
+    Collection c = Chat.getMensagensNaoLidas(usuario, sala, lastUpdate);
+    System.out.println("lastUpdate = " + lastUpdate);
+    System.out.println("mensagens = " + c);
+    return c;
   }
 }

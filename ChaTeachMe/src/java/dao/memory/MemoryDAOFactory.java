@@ -114,7 +114,7 @@ public class MemoryDAOFactory extends DAOFactory {
                 SalaDAO s = (SalaDAO) it.next();
 
                 m1 = new MensagemDAO();
-                m1.setDataEnvio(new Date(2011, 12, 1, 0, 0));
+                m1.setDataEnvio(new Date());
                 m1.setUsuario((IUsuarioDAO) usuarios.toArray()[0]);
                 m1.setId(Integer.valueOf(++id));
                 m1.setMensagem("Hello World " + id);
@@ -122,7 +122,7 @@ public class MemoryDAOFactory extends DAOFactory {
                 m1.setTipo("texto");
 
                 m2 = new MensagemDAO();
-                m2.setDataEnvio(new Date(2011, 12, 1, 0, 0));
+                m2.setDataEnvio(new Date());
                 m2.setUsuario((IUsuarioDAO) usuarios.toArray()[0]);
                 m2.setId(Integer.valueOf(++id));
                 m2.setMensagem("1 + sin(x)");

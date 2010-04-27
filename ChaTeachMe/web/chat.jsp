@@ -26,8 +26,8 @@ body,td,th {
 	function onout(obj){
 		obj.style.backgroundColor = outColor;
 	}
-        function go_form(){
-            var dataString = '';
+        function go_form() {
+            var dataString = 'texto=' + window.btoa($('#texto').val()) + '&tipo_texto=' + $('#tipo_texto').val();
 
             $.ajax({
                 type: "POST",
@@ -58,7 +58,7 @@ body,td,th {
 
         function processReq()
         {
-            var dataString = '';
+          var dataString = '';
 
             $.getJSON("ChatServlet?GetMensagens",
                 function (data)

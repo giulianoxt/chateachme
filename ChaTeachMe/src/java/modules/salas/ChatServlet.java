@@ -4,6 +4,7 @@
  */
 package modules.salas;
 
+import sun.misc.BASE64Decoder;
 import controller.CTLServlet;
 import dao.DAOFactory;
 import dao.IMensagemDAO;
@@ -11,7 +12,6 @@ import dao.ISalaDAO;
 import dao.IUsuarioDAO;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
@@ -24,6 +24,8 @@ import javax.servlet.http.*;
  * @author max
  */
 public class ChatServlet extends CTLServlet {
+    // mudar isso depois, quando tiver usando o BD
+    private static int msgCount = 5;
 
     public String getServletInfo() {
         return "Short description";
@@ -56,8 +58,8 @@ public class ChatServlet extends CTLServlet {
                     sala = daoFactory.findSala(request.getParameter("sala"));
                     if (sala != null) {
                         sala_ok = Boolean.valueOf(true);
-                        //TODO: Mudar linha abaixo
-                        msgs = business.Facade.getMensagensNaoLidas(usuario, sala, new Date(2010, 1, 1));
+                        
+                        msgs = business.Facade.getMensagensNaoLidas(usuario, sala, new Date(0));
 
                         business.Facade.entrarEmSala(usuario, sala);
 
@@ -66,7 +68,7 @@ public class ChatServlet extends CTLServlet {
 
                         sess.setAttribute("sala_obj", sala);
                         //TODO: Mudar linha abaixo ( Data )
-                        sess.setAttribute("data_atualizacao", Calendar.getInstance().getTime());
+                        sess.setAttribute("data_atualizacao", new Date());
                     }
                 }
             }
@@ -101,9 +103,17 @@ public class ChatServlet extends CTLServlet {
                 msg = DAOFactory.getDAOFactory().newMensagem();
                 msg.setDataEnvio(new Date());
                 msg.setSala(sala);
+
                 //TODO: Mudar linha abaixo ( O valor de id é incrementado automaticamente )
-                msg.setId(Integer.valueOf(10));
-                msg.setMensagem(request.getParameter("texto"));
+                msg.setId(new Integer(++msgCount));
+
+                String msg_base64 = request.getParameter("texto");
+
+                BASE64Decoder decoder = new BASE64Decoder();
+                byte[] msg_bytes = decoder.decodeBuffer(msg_base64);
+                String msg_text = new String(msg_bytes, "ASCII");
+                msg.setMensagem(msg_text);
+                
                 msg.setTipo(request.getParameter("tipo_texto"));
                 msg.setUsuario(usuario);
                 business.Facade.enviarMensagem(usuario, msg);
@@ -140,10 +150,14 @@ public class ChatServlet extends CTLServlet {
 
                 ArrayList arr = new ArrayList();
 
+                Date last = (Date)sess.getAttribute("data_atualizacao");
+                if (last == null)
+                  last = new Date(0);
+
                 //MUDAR LINHA ABAIXO
-                msgs = business.Facade.getMensagensNaoLidas(usuario, sala, new Date(2010, 1, 1));
+                msgs = business.Facade.getMensagensNaoLidas(usuario, sala, last);
                 //MUDAR LINHA ABAIXO
-                sess.setAttribute("data_atualizacao", new Date(2010, 1, 1));
+                sess.setAttribute("data_atualizacao", new Date());
 
                 it_msg = msgs.iterator();
                 while (it_msg.hasNext())

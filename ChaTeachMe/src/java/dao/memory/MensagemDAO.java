@@ -58,4 +58,8 @@ public class MensagemDAO implements IMensagemDAO {
   public void setUsuario(IUsuarioDAO usuario) {
     this.usuarioLogin = usuario.getLogin();
   }
+
+  public String toString() {
+    return "[" + id + " / " + data + "] " + usuarioLogin + ": " + mensagem;
+  }
 }
