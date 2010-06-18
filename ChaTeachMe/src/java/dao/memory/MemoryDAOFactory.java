@@ -19,33 +19,36 @@ public class MemoryDAOFactory extends DAOFactory {
   private void addUsers() {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] senha1234 = md.digest("1234".getBytes());
+            byte[] senha12345 = md.digest("12345".getBytes());
           
             dao.memory.UsuarioDAO u1 = new dao.memory.UsuarioDAO();
             u1.setEmail("m.r650200@gmail.com");
             u1.setLogin("m.r650200");
-            u1.setSenha(senha1234);
+            u1.setNome("m.r650200");
+            u1.setSenha(senha12345);
 
             dao.memory.UsuarioDAO u2 = new dao.memory.UsuarioDAO();
             u2.setEmail("ex1@ex.com.br");
             u2.setLogin("ex1");
-            u2.setSenha(senha1234);
+            u2.setNome("ex1");
+            u2.setSenha(senha12345);
 
             dao.memory.UsuarioDAO u3 = new dao.memory.UsuarioDAO();
             u3.setEmail("ex2");
             u3.setLogin("ex3");
-            u3.setSenha(senha1234);
+            u3.setNome("ex3");
+            u3.setSenha(senha12345);
 
             dao.memory.UsuarioDAO u4 = new dao.memory.UsuarioDAO();
             u4.setEmail("m.r650200@gmail.com");
             u4.setLogin("m.r650200");
-            u4.setSenha(senha1234);
+            u4.setNome("m.r650200");
+            u4.setSenha(senha12345);
 
-            usuarios.add(u1);
-            usuarios.add(u2);
-            usuarios.add(u3);
-            usuarios.add(u4);
-
+            insertUsuario(u1);
+            insertUsuario(u2);
+            insertUsuario(u3);
+            insertUsuario(u4);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -54,7 +57,7 @@ public class MemoryDAOFactory extends DAOFactory {
   private void addProfessor() {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] senha1234 = md.digest("1234".getBytes());
+            byte[] senha12345 = md.digest("12345".getBytes());
             ProfessorDAO p1;
             ProfessorDAO p2;
             
@@ -62,16 +65,16 @@ public class MemoryDAOFactory extends DAOFactory {
             p1.setEmail("prof1@ex.com");
             p1.setNome("Prof Um");
             p1.setLogin("prof1");
-            p1.setSenha(senha1234);
+            p1.setSenha(senha12345);
 
             p2 = new ProfessorDAO();
             p2.setEmail("prof2@ex.com");
             p2.setNome("Prof Dois");
             p2.setLogin("prof2");
-            p2.setSenha(senha1234);
+            p2.setSenha(senha12345);
 
-            professores.add(p1);
-            professores.add(p2);
+            insertProfessor(p1);
+            insertProfessor(p2);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -89,16 +92,18 @@ public class MemoryDAOFactory extends DAOFactory {
             s1.setDataCriacao(new Date());
             s1.setDescricao("Exemplo de descrição de sala");
             s1.setIpCamera(Integer.valueOf(local));
-            s1.setTitulo("Exemplo 1 de sala");
+            s1.setSalaAberta(Boolean.TRUE);
+            s1.setTitulo("Sala 1 (Exemplo)");
             
             s2 = new SalaDAO();
             s2.setDataCriacao(new Date());
             s2.setDescricao("Exemplo de descrição de sala");
             s2.setIpCamera(Integer.valueOf(local));
-            s2.setTitulo("Exemplo 2 de sala");
+            s2.setSalaAberta(Boolean.FALSE);
+            s2.setTitulo("Sala 2 (Exemplo)");
 
-            salas.add(s1);
-            salas.add(s2);
+            insertSala(s1);
+            insertSala(s2);
         } catch (DAOException ex) {
             ex.printStackTrace();
         }
@@ -129,9 +134,8 @@ public class MemoryDAOFactory extends DAOFactory {
                 m2.setSala(s);
                 m2.setTipo("latex");
 
-                mensagens.add(m1);
-                mensagens.add(m2);
-                
+                insertMensagem(m1);
+                insertMensagem(m2);
             } catch (DAOException ex) {
                 ex.printStackTrace();
             }
@@ -141,7 +145,7 @@ public class MemoryDAOFactory extends DAOFactory {
   private void addAdministrador() {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] senha1234 = md.digest("1234".getBytes());
+            byte[] senha12345 = md.digest("12345".getBytes());
 
             AdministradorDAO a1;
             AdministradorDAO a2;
@@ -149,17 +153,17 @@ public class MemoryDAOFactory extends DAOFactory {
             a1 = new AdministradorDAO();
             a1.setEmail("admin@ex.com");
             a1.setLogin("admin1");
-            a1.setSenha(senha1234);
+            a1.setSenha(senha12345);
             a1.setNome("Admin Um");
             
             a2 = new AdministradorDAO();
             a2.setEmail("admin@ex.com");
             a2.setLogin("admin2");
-            a2.setSenha(senha1234);
+            a2.setSenha(senha12345);
             a2.setNome("Admin Dois");
 
-            administradores.add(a1);
-            administradores.add(a2);
+            insertAdministrador(a1);
+            insertAdministrador(a2);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -177,7 +181,7 @@ public class MemoryDAOFactory extends DAOFactory {
                     sit.setSala(s);
                     sit.setSituacao("Online");
                     sit.setUsuario(u);
-                    situacoes.add(sit);
+                    insertSituacaoUsuarioSala(sit);
                 } catch (DAOException ex) {
                     ex.printStackTrace();
                 }
@@ -224,10 +228,12 @@ public class MemoryDAOFactory extends DAOFactory {
   }
 
   public void insertProfessor(IProfessorDAO professor) throws DAOException {
+    usuarios.add(professor);
     professores.add(professor);
   }
 
   public void deleteProfessor(IProfessorDAO professor) {
+    usuarios.remove(professor);
     professores.remove(professor);
   }
 
@@ -249,10 +255,14 @@ public class MemoryDAOFactory extends DAOFactory {
   }
 
   public void insertAdministrador(IAdministradorDAO administrador) throws DAOException {
+    usuarios.add(administrador);
+    professores.add(administrador);
     administradores.add(administrador);
   }
 
   public void deleteAdministrador(IAdministradorDAO administrador) {
+    usuarios.remove(administrador);
+    professores.remove(administrador);
     administradores.remove(administrador);
   }
 

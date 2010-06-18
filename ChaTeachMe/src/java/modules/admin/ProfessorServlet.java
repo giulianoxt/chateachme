@@ -43,6 +43,7 @@ public class ProfessorServlet extends CTLServlet {
                 login_ok = Boolean.valueOf(true);
             }
             getServletContext().setAttribute("login_ok", login_ok);
+            getServletContext().setAttribute("salas", DAOFactory.getDAOFactory().findAllSalas());
 
             dispatcher.forward(request, response);
         } catch (Exception ex) {

@@ -136,9 +136,16 @@ body,td,th {
                   <td><div align="center"></div></td>
                 </tr>
 
-                  
+
+                  <%
+                     java.util.Collection salas = (java.util.Collection)getServletContext().getAttribute("salas");
+                     java.util.Iterator it = salas.iterator();
+
+                     while (it.hasNext()) {
+                         dao.ISalaDAO sala = (dao.ISalaDAO) it.next();
+                  %>
                 <tr>
-                  <td><div align="center">Exemplo1</div></td>
+                    <td><div align="center"><%= sala.getTitulo()%></div></td>
                   <td><div align="center">
                     <input type="submit" name="Submit2" value="Abrir" />
                   </div></td>
@@ -146,26 +153,7 @@ body,td,th {
                     <input type="submit" name="Submit3" value="Excluir" />
                   </div></td>
                 </tr>
-
-
-                <tr>
-                  <td><div align="center">Exemplo2</div></td>
-                  <td><div align="center">
-                    <input type="submit" name="Submit4" value="Abrir" />
-                  </div></td>
-                  <td><div align="center">
-                    <input type="submit" name="Submit5" value="Excluir" />
-                  </div></td>
-                </tr>
-                <tr>
-                  <td bgcolor="#99CC33"><div align="center">Exemplo3</div></td>
-                  <td><div align="center">
-                    <input type="submit" name="Submit6" value="Fechar" />
-                  </div></td>
-                  <td><div align="center">
-                    <input type="submit" name="Submit7" value="Excluir" />
-                  </div></td>
-                </tr>
+                  <% } %>
               </table>
             </div></td>
           </tr>
