@@ -11,11 +11,9 @@ typedef tm datetime;
 #include <list>
 #include <string>
 #include <sstream>
+#include <iomanip>
 using namespace std;
 
-
-void turn_on(const string& ac_id);
-void turn_off(const string& ac_id);
 
 int datetime_cmp(const datetime& a, const datetime& b);
 ostream& operator<<(ostream& out, const datetime& dt);
@@ -23,6 +21,9 @@ ostream& operator<<(ostream& out, const datetime& dt);
 
 namespace scheduler
 {
+
+void turn_on(const string& ac_id);
+void turn_off(const string& ac_id);
 
 struct ac_device
 {
@@ -107,6 +108,9 @@ tasklist pending;
  */
 void init(istream& config)
 {
+    time_t tt_now = time(0);
+    const datetime& now = *localtime(&tt_now);
+
     ac_devices.clear();
     ac_tasks.clear();
     running.clear();
@@ -154,6 +158,13 @@ void init(istream& config)
 
     ac_tasks.sort();
     next_task = ac_tasks.begin();
+
+    for (tasklist::iterator it = ac_tasks.begin(); it != ac_tasks.end(); ++it) {
+        if (it->is_active(now) || datetime_cmp(it->end, now) > 0) {
+            next_task = it;
+            break;
+        }
+    }
 }
 
 
@@ -233,18 +244,20 @@ void tick()
 }
 
 
-}
-
-
 void turn_on(const string& ac_id)
 {
     cout << ac_id << " on" << endl;
+    net_udp::turn_on(ac_devices[ac_id].host, ac_devices[ac_id].port);
 }
 
 
 void turn_off(const string& ac_id)
 {
     cout << ac_id << " off" << endl;
+    net_udp::turn_off(ac_devices[ac_id].host, ac_devices[ac_id].port);
+}
+
+
 }
 
 
@@ -266,5 +279,7 @@ int datetime_cmp(const datetime& a, const datetime& b)
 
 ostream& operator<<(ostream& out, const datetime& dt)
 {
-    return out << dt.tm_hour << ':' << dt.tm_min << ':' << dt.tm_sec;
+    return out << setw(2) << setfill('0') << dt.tm_hour << ':'
+               << setw(2) << setfill('0') << dt.tm_min  << ':'
+               << setw(2) << setfill('0') << dt.tm_sec;
 }

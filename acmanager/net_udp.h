@@ -8,9 +8,11 @@ using namespace std;
 namespace net_udp
 {
 
-void turn_on(const string& host);
+void init();
 
-void turn_off(const string& host);
+void turn_on(const string& host, const int port);
+
+void turn_off(const string& host, const int port);
 
 }
 

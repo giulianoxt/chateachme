@@ -10,7 +10,7 @@ ac LCC2 127.0.0.1 3328 5
 # Horários das ativações dos ar-condicionados
 # formato: turn_on <id> <inicio> <fim>
 
-turn_on 3G1 22:29:00 22:29:10
+turn_on 3G1 00:00:41 00:00:44
 turn_on 3G2 22:29:03 22:29:06
 
 

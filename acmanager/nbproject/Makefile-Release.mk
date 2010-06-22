@@ -57,7 +57,7 @@ LDLIBSOPTIONS=
 
 dist/Release/GNU-Linux-x86/acmanager: ${OBJECTFILES}
 	${MKDIR} -p dist/Release/GNU-Linux-x86
-	${LINK.cc} -lpthread -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/acmanager ${OBJECTFILES} ${LDLIBSOPTIONS} 
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/acmanager ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
 ${OBJECTDIR}/scheduler.o: nbproject/Makefile-${CND_CONF}.mk scheduler.cpp 
 	${MKDIR} -p ${OBJECTDIR}

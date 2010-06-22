@@ -37,7 +37,6 @@
         <linkerTool>
           <linkerLibItems>
           </linkerLibItems>
-          <commandLine>-lpthread</commandLine>
         </linkerTool>
       </compileType>
     </conf>
@@ -60,7 +59,6 @@
         <linkerTool>
           <linkerLibItems>
           </linkerLibItems>
-          <commandLine>-lpthread</commandLine>
         </linkerTool>
       </compileType>
     </conf>

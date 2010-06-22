@@ -3,8 +3,8 @@
 #include <fstream>
 using namespace std;
 
+#include "net_udp.h"
 #include "scheduler.h"
-
 
 const int refresh_time = 1; // sec
 
@@ -29,6 +29,8 @@ int main(int argc, char** argv)
 
     scheduler::init(config);
     config.close();
+
+    net_udp::init();
 
     while (true) {
         scheduler::tick();
