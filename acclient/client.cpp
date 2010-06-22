@@ -46,8 +46,12 @@ int main(int argc, char** argv) {
         if (cmd == TURN_ON_CMD) {
             cout << "turned on" << endl;
         }
-        else {
+        else if (cmd == TURN_OFF_CMD) {
             cout << "turned off" << endl;
+        }
+        else {
+            cout << "cmd error" << endl;
+            exit(1);
         }
     }
 
