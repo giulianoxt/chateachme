@@ -1,18 +1,21 @@
-/* 
- * File:   net_udp.cpp
- * Author: giulianoxt
- * 
- * Created on June 21, 2010, 8:02 PM
- */
-
 #include "net_udp.h"
 
-net_udp::net_udp() {
+#include <pthread.h>
+
+
+namespace net_udp
+{
+
+void turn_on(const string& host)
+{
+
 }
 
-net_udp::net_udp(const net_udp& orig) {
+
+void turn_off(const string& host)
+{
+
 }
 
-net_udp::~net_udp() {
-}
 
+}

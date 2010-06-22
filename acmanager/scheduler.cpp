@@ -1,4 +1,5 @@
 #include "scheduler.h"
+#include "net_udp.h"
 
 #include <ctime>
 #include <cstring>

@@ -1,21 +1,18 @@
-/* 
- * File:   net_udp.h
- * Author: giulianoxt
- *
- * Created on June 21, 2010, 8:02 PM
- */
-
 #ifndef _NET_UDP_H
 #define	_NET_UDP_H
 
-class net_udp {
-public:
-    net_udp();
-    net_udp(const net_udp& orig);
-    virtual ~net_udp();
-private:
+#include <string>
+using namespace std;
 
-};
 
-#endif	/* _NET_UDP_H */
+namespace net_udp
+{
 
+void turn_on(const string& host);
+
+void turn_off(const string& host);
+
+}
+
+
+#endif
