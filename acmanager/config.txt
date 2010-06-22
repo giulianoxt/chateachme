@@ -1,0 +1,24 @@
+# Descrições dos ar-condicionados
+# formato: ac <id> <host> <port> <prioridade>
+
+ac 3G1  127.0.0.1 3323 0
+ac 3G4  127.0.0.1 3324 1
+ac LCC1 127.0.0.1 3327 4
+ac LCC2 127.0.0.1 3328 5
+
+
+# Horários das ativações dos ar-condicionados
+# formato: turn_on <id> <inicio> <fim>
+
+turn_on 3G1 21:53:00 21:53:10
+turn_on 3G2 21:53:15 21:53:25
+
+# Limite de ar-condicionados ligados
+limit 1
+
+
+# Algoritmo de escalonamento
+# algorithm (static | monotonic_rate)
+
+static
+run
