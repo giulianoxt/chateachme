@@ -2,7 +2,7 @@
 # formato: ac <id> <host> <port> <prioridade>
 
 ac 3G1  127.0.0.1 3323 0
-ac 3G4  127.0.0.1 3324 1
+ac 3G2  127.0.0.1 3324 1
 ac LCC1 127.0.0.1 3327 4
 ac LCC2 127.0.0.1 3328 5
 
