@@ -3,15 +3,21 @@
 
 ac 3G1  127.0.0.1 3323 0
 ac 3G2  127.0.0.1 3324 1
-ac LCC1 127.0.0.1 3327 4
-ac LCC2 127.0.0.1 3328 5
+ac LCC1 127.0.0.1 3327 3
+ac LCC2 127.0.0.1 3328 4
 
 
 # Horários das ativações dos ar-condicionados
 # formato: turn_on <id> <inicio> <fim>
 
-turn_on 3G1 00:00:41 00:00:44
-turn_on 3G2 22:29:03 22:29:06
+# static tests
+turn_on 3G1 11:36:10 11:36:30
+turn_on 3G2 11:36:20 11:36:25
+
+# edf tests
+# turn_on 3G1  11:33:10 11:33:30
+# turn_on 3G2  11:33:15 11:33:25
+# turn_on LCC1 11:33:18 11:33:20
 
 
 # Limite de ar-condicionados ligados
@@ -19,6 +25,6 @@ limit 1
 
 
 # Algoritmo de escalonamento
-# algorithm (static | monotonic_rate)
+# algorithm (static | edf)
 
-static
+algorithm static

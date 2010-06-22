@@ -60,7 +60,7 @@ struct ac_task
 enum algorithm_t
 {
     STATIC,
-    MONOTONIC_RATE
+    EDF
 };
 
 typedef list<ac_task> tasklist;
@@ -148,11 +148,14 @@ void init(istream& config)
         else if (op == "limit") {
             config >> ac_limit;
         }
-        else if (op == "static") {
-            algorithm = STATIC;
-        }
-        else if (op == "monotonic_rate") {
-            algorithm = MONOTONIC_RATE;
+        else if (op == "algorithm") {
+            config >> op;
+            if (op == "static") {
+                algorithm = STATIC;
+            }
+            else if (op == "edf") {
+                algorithm = EDF;
+            }
         }
     }
 
@@ -228,6 +231,27 @@ void tick()
             if (pen_dev.priority > min_dev.priority) {
                 turn_off(min_p->ac_id);
                 running.erase(min_p);
+
+                turn_on(it->ac_id);
+                running.push_back(*it);
+                it = pending.erase(it);
+            }
+            else {
+                ++it;
+            }
+        }
+        else if (algorithm == EDF) {
+            tasklist::iterator max_dl = running.begin();
+
+            for (tasklist::iterator it2 = ++running.begin(); it2 != running.end(); ++it2) {
+                if (datetime_cmp(it2->end, max_dl->end) > 0) {
+                    max_dl = it2;
+                }
+            }
+
+            if (datetime_cmp(it->end, max_dl->end) < 0) {
+                turn_off(max_dl->ac_id);
+                running.erase(max_dl);
 
                 turn_on(it->ac_id);
                 running.push_back(*it);
