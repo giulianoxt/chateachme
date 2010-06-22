@@ -161,7 +161,7 @@ void tick()
     time_t tt_now = time(0);
     const datetime& now = *localtime(&tt_now);
 
-    cout << "now = " << now << endl;
+    cout << "tick() " << now << endl;
 
     for (tasklist::iterator it = running.begin(); it != running.end(); ) {
         if (!it->is_active(now)) {
@@ -216,6 +216,10 @@ void tick()
 
                 cout << it->ac_id << " on" << endl;
                 running.push_back(*it);
+                it = pending.erase(it);
+            }
+            else {
+                ++it;
             }
         }
         else {
