@@ -14,6 +14,7 @@ using namespace std;
 
 
 int datetime_cmp(const datetime& a, const datetime& b);
+ostream& operator<<(ostream& out, const datetime& dt);
 
 
 namespace scheduler
@@ -60,21 +61,46 @@ enum algorithm_t
 typedef list<ac_task> tasklist;
 
 
+/**
+ * Mapeamento id -> ac_device
+ */
 map<string, ac_device> ac_devices;
 
+/**
+ * Número máximo de ar-condicionados ligados
+ */
 int ac_limit;
 
+/**
+ * Algoritmo de escalonamento escolhido
+ */
 algorithm_t algorithm;
 
-
+/**
+ * Lista de todas as ativações (não muda depois do init)
+ */
 tasklist ac_tasks;
+
+/**
+ * Próxima tarefa a ser analisada em ac_tasks
+ */
 tasklist::iterator next_task;
 
+/**
+ * Ar-condicionados que estão ligados
+ */
 tasklist running;
+
+/**
+ * Ar-condicionados que estão esperando para serem ligados
+ * (está sendo ativado atualmente ou foi preemptado recentemente)
+ */
 tasklist pending;
 
 
-
+/**
+ * Lê as configurações de um arquivo texto
+ */
 void init(istream& config)
 {
     ac_devices.clear();
@@ -84,7 +110,10 @@ void init(istream& config)
 
     string op;
     while (config >> op) {
-        if (op == "ac") {
+        if (op == "#") {
+            getline(config, op);
+        }
+        else if (op == "ac") {
             string id;
             ac_device ac;
 
@@ -120,17 +149,23 @@ void init(istream& config)
     }
 
     ac_tasks.sort();
+    next_task = ac_tasks.begin();
 }
 
 
+/**
+ * Atualiza os estados dos ar-condicionados de acordo com as ativações
+ */
 void tick()
 {
     time_t tt_now = time(0);
     const datetime& now = *localtime(&tt_now);
 
+    cout << "now = " << now << endl;
+
     for (tasklist::iterator it = running.begin(); it != running.end(); ) {
         if (!it->is_active(now)) {
-            cout << it->ac_id << "off" << endl;
+            cout << it->ac_id << " off" << endl;
             it = running.erase(it);
         }
         else {
@@ -156,7 +191,7 @@ void tick()
             it = pending.erase(it);
         }
         else if (running.size() < ac_limit) {
-            cout << it->ac_id << "on" << endl;
+            cout << it->ac_id << " on" << endl;
             running.push_back(*it);
             it = pending.erase(it);
         }
@@ -176,10 +211,10 @@ void tick()
             const ac_device& pen_dev = ac_devices[it->ac_id];
 
             if (pen_dev.priority > min_dev.priority) {
-                cout << min_p->ac_id << "off" << endl;
+                cout << min_p->ac_id << " off" << endl;
                 running.erase(min_p);
 
-                cout << it->ac_id << "on" << endl;
+                cout << it->ac_id << " on" << endl;
                 running.push_back(*it);
             }
         }
@@ -207,4 +242,9 @@ int datetime_cmp(const datetime& a, const datetime& b)
     else {
         return 0;
     }
+}
+
+ostream& operator<<(ostream& out, const datetime& dt)
+{
+    return out << dt.tm_hour << ':' << dt.tm_min << ':' << dt.tm_sec;
 }
