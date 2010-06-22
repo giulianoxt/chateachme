@@ -13,6 +13,9 @@ typedef tm datetime;
 using namespace std;
 
 
+void turn_on(const string& ac_id);
+void turn_off(const string& ac_id);
+
 int datetime_cmp(const datetime& a, const datetime& b);
 ostream& operator<<(ostream& out, const datetime& dt);
 
@@ -165,7 +168,7 @@ void tick()
 
     for (tasklist::iterator it = running.begin(); it != running.end(); ) {
         if (!it->is_active(now)) {
-            cout << it->ac_id << " off" << endl;
+            turn_off(it->ac_id);
             it = running.erase(it);
         }
         else {
@@ -191,7 +194,7 @@ void tick()
             it = pending.erase(it);
         }
         else if (running.size() < ac_limit) {
-            cout << it->ac_id << " on" << endl;
+            turn_on(it->ac_id);
             running.push_back(*it);
             it = pending.erase(it);
         }
@@ -200,7 +203,7 @@ void tick()
 
             for (tasklist::iterator it2 = ++running.begin(); it2 != running.end(); ++it2) {
                 const ac_device& min_dev = ac_devices[min_p->ac_id];
-                const ac_device& it_dev    = ac_devices[it2->ac_id];
+                const ac_device& it_dev  = ac_devices[it2->ac_id];
 
                 if (it_dev.priority < min_dev.priority) {
                     min_p = it2;
@@ -211,10 +214,10 @@ void tick()
             const ac_device& pen_dev = ac_devices[it->ac_id];
 
             if (pen_dev.priority > min_dev.priority) {
-                cout << min_p->ac_id << " off" << endl;
+                turn_off(min_p->ac_id);
                 running.erase(min_p);
 
-                cout << it->ac_id << " on" << endl;
+                turn_on(it->ac_id);
                 running.push_back(*it);
                 it = pending.erase(it);
             }
@@ -229,6 +232,18 @@ void tick()
 }
 
 
+}
+
+
+void turn_on(const string& ac_id)
+{
+    cout << ac_id << " on" << endl;
+}
+
+
+void turn_off(const string& ac_id)
+{
+    cout << ac_id << " off" << endl;
 }
 
 
