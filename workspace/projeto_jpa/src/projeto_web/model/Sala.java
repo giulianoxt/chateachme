@@ -1,5 +1,6 @@
 package projeto_web.model;
 
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,11 +14,23 @@ import java.io.Serializable;
 public class Sala implements Serializable {
 	@Id
 	private String titulo;
+	
 	private Boolean salaAberta;
+	
 	private String descricao;
+	
 	@Temporal(value=TemporalType.TIMESTAMP)
 	private Date dataCriacao;
+	
 	private Integer ipCamera;
+	
+	@OneToMany()
+	@JoinColumn(name = "sala_titulo")
+	private Collection<Mensagem> mensagens;
+	
+	@OneToMany
+	@JoinColumn(name = "sala_titulo")
+	private Collection<SituacaoUsuarioSala> situacoes;
 
 	public Sala() {
 		super();
@@ -58,5 +71,19 @@ public class Sala implements Serializable {
 		this.ipCamera = ipCamera;
     }
 	
+	public void setMensagens(Collection<Mensagem> mensagens) {
+		this.mensagens = mensagens;
+	}
+	public Collection<Mensagem> getMensagens() {
+		return mensagens;
+	}
+
+	public void setSituacoes(Collection<SituacaoUsuarioSala> situacoes) {
+		this.situacoes = situacoes;
+	}
+	public Collection<SituacaoUsuarioSala> getSituacoes() {
+		return situacoes;
+	}
+
 	private static final long serialVersionUID = 1L;
 }

@@ -1,6 +1,8 @@
 package projeto_web.model;
 
 import java.io.Serializable;
+import java.util.Collection;
+
 import javax.persistence.*;
 
 
@@ -22,6 +24,14 @@ public class Usuario implements Serializable {
 	private String nome;
 
 	private String senha;
+	
+	@OneToMany
+	@JoinColumn(name = "usuario_login")
+	private Collection<Mensagem> mensagens;
+	
+	@OneToMany
+	@JoinColumn(name = "usuario_login")
+	private Collection<SituacaoUsuarioSala> situacoes;
 
     public Usuario() {
     }
@@ -58,5 +68,21 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 	}
 	
+	public void setMensagens(Collection<Mensagem> mensagens) {
+		this.mensagens = mensagens;
+	}
+
+	public Collection<Mensagem> getMensagens() {
+		return mensagens;
+	}
+
+	public void setSituacoes(Collection<SituacaoUsuarioSala> situacoes) {
+		this.situacoes = situacoes;
+	}
+
+	public Collection<SituacaoUsuarioSala> getSituacoes() {
+		return situacoes;
+	}
+
 	private static final long serialVersionUID = 1L;
 }

@@ -15,10 +15,16 @@ import projeto_web.model.Usuario;
 public class SituacaoUsuarioSala implements Serializable {
 	@Id
 	private Integer id;
-	private Sala sala;
-	private Usuario usuario;
+	
 	private String situacao;
+	
 	private Long tempoEmSala;
+	
+	@ManyToOne
+	private Sala sala;
+	
+	@ManyToOne
+	private Usuario usuario;
 
 	public SituacaoUsuarioSala() {
 		super();

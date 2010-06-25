@@ -17,11 +17,18 @@ import projeto_web.model.Usuario;
 public class Mensagem implements Serializable {
 	@Id
 	private Integer id;
+	
 	private String mensagem;
+	
 	@Temporal(value=TemporalType.TIMESTAMP)
 	private Date dataEnvio;
+	
 	private String tipo;
+	
+	@ManyToOne
 	private Sala sala;
+	
+	@ManyToOne
 	private Usuario usuario;
 
 	public Mensagem() {
