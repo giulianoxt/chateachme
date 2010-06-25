@@ -8,15 +8,12 @@ import javax.persistence.*;
  * The persistent class for the usuario database table.
  * 
  */
+@Entity
+@Table(name="usuario") 
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="tipo", discriminatorType=DiscriminatorType.STRING, length = 20)
 @DiscriminatorValue("usuario")
-@Entity
-@Table(name="usuario") 
 public class Usuario implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
-
 	@Id
 	private String login;
 
@@ -60,5 +57,6 @@ public class Usuario implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
+	
+	private static final long serialVersionUID = 1L;
 }
