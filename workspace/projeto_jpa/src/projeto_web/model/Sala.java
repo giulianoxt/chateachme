@@ -78,7 +78,6 @@ public class Sala implements Serializable {
 	
 	public void setMensagens(Collection<Mensagem> mensagens) {
 		this.mensagens = mensagens;
-	
 	}
 	
 	public Collection<Mensagem> getMensagens() {
