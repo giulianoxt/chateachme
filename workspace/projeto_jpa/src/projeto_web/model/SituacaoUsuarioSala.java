@@ -45,20 +45,23 @@ public class SituacaoUsuarioSala implements Serializable {
 	public void setSala(Sala sala) {
 		this.sala = sala;
 	}   
+	
 	public Usuario getUsuario() {
 		return this.usuario;
 	}
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}   
+	}
+	
 	public String getSituacao() {
 		return this.situacao;
 	}
 
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
-	}   
+	}
+	
 	public Long getTempoEmSala() {
 		return this.tempoEmSala;
 	}

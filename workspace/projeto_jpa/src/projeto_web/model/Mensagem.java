@@ -34,27 +34,31 @@ public class Mensagem implements Serializable {
 	public Mensagem() {
 		super();
 	}   
+	
 	public Integer getId() {
 		return this.id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
-	}   
+	}
+	
 	public String getMensagem() {
 		return this.mensagem;
 	}
 
 	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
-	}   
+	}
+	
 	public Date getDataEnvio() {
 		return this.dataEnvio;
 	}
 
 	public void setDataEnvio(Date dataEnvio) {
 		this.dataEnvio = dataEnvio;
-	}   
+	}
+	
 	public String getTipo() {
 		return this.tipo;
 	}
@@ -62,13 +66,15 @@ public class Mensagem implements Serializable {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}   
+	
 	public Sala getSala() {
 		return this.sala;
 	}
 
 	public void setSala(Sala sala) {
 		this.sala = sala;
-	}   
+	}
+	
 	public Usuario getUsuario() {
 		return this.usuario;
 	}

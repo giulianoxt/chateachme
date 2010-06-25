@@ -35,13 +35,15 @@ public class Sala implements Serializable {
 	public Sala() {
 		super();
 	}   
+	
 	public String getTitulo() {
 		return this.titulo;
 	}
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
-	}   
+	}
+	
 	public Boolean getSalaAberta() {
 		return this.salaAberta;
 	}
@@ -49,6 +51,7 @@ public class Sala implements Serializable {
 	public void setSalaAberta(Boolean salaAberta) {
 		this.salaAberta = salaAberta;
 	}   
+	
 	public String getDescricao() {
 		return this.descricao;
 	}
@@ -56,13 +59,15 @@ public class Sala implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}   
+	
 	public Date getDataCriacao() {
 		return this.dataCriacao;
 	}
 
 	public void setDataCriacao(Date dataCriacao) {
 		this.dataCriacao = dataCriacao;
-	}   
+	}
+	
 	public Integer getIpCamera() {
 		return this.ipCamera;
 	}
@@ -73,7 +78,9 @@ public class Sala implements Serializable {
 	
 	public void setMensagens(Collection<Mensagem> mensagens) {
 		this.mensagens = mensagens;
+	
 	}
+	
 	public Collection<Mensagem> getMensagens() {
 		return mensagens;
 	}
@@ -81,6 +88,7 @@ public class Sala implements Serializable {
 	public void setSituacoes(Collection<SituacaoUsuarioSala> situacoes) {
 		this.situacoes = situacoes;
 	}
+	
 	public Collection<SituacaoUsuarioSala> getSituacoes() {
 		return situacoes;
 	}
