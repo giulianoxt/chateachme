@@ -4,12 +4,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.apache.catalina.util.MD5Encoder;
-
 import projeto_web.model.Professor;
 import projeto_web.model.Usuario;
-
-import sun.security.provider.MD5;
 
 /**
  * Session Bean implementation class UsuarioBean
@@ -34,7 +30,6 @@ public class UsuarioBean implements UsuarioBeanLocal {
     
     public void cadastrarUsuario(String login, String senha, String nome, String email)
     {
-    	
     	Usuario usuario = new Usuario();
     	
     	usuario.setNome(nome);
@@ -43,12 +38,10 @@ public class UsuarioBean implements UsuarioBeanLocal {
     	usuario.setEmail(email);
     	
     	em.persist(usuario);
-
     }
      
     public void cadastrarProfessor(String login, String senha, String nome, String email)
     {
-
     	Professor professor = new Professor();
     	
     	professor.setEmail(email);
@@ -57,7 +50,5 @@ public class UsuarioBean implements UsuarioBeanLocal {
     	professor.setSenha(senha);
     	
     	em.persist(professor);
-
     }
-
 }

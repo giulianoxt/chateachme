@@ -15,6 +15,7 @@ public class Sala implements Serializable {
 	private String titulo;
 	private Boolean salaAberta;
 	private String descricao;
+	@Temporal(value=TemporalType.TIMESTAMP)
 	private Date dataCriacao;
 	private Integer ipCamera;
 

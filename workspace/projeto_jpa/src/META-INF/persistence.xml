@@ -7,5 +7,9 @@
 		<class>projeto_web.model.SituacaoUsuarioSala</class>
 		<class>projeto_web.model.Administrador</class>
 		<class>projeto_web.model.Mensagem</class>
+		<properties>
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+			<property name="eclipselink.ddl-generation.output-mode" value="sql-script"/>
+		</properties>
 	</persistence-unit>
 </persistence>
